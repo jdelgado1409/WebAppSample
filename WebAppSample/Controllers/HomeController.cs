@@ -19,6 +19,9 @@ namespace WebAppSample.Controllers
         public IActionResult Index()
         {
             ViewBag.MySqlString = _connectionStrings.MYSQLCONNSTR_mysquielconst;
+            _logger.LogInformation("Info: Starting Application");
+            _logger.LogWarning("Warning: Starting Application");
+            _logger.LogError("Error: Starting Application");
             return View();
         }
 
