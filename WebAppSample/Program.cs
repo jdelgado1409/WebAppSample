@@ -1,5 +1,6 @@
 using System.Runtime;
 using WebAppSample.Models;
+using Microsoft.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,11 @@ builder.Services.AddControllersWithViews();
 
 //Configure config binding
 builder.Services.Configure<MyConnectionStrings>(builder.Configuration.GetSection("ConnectionStrings"));
+
+//Configure azure logging
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
+builder.Logging.AddAzureWebAppDiagnostics();
 
 var app = builder.Build();
 
