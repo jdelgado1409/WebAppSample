@@ -2,7 +2,7 @@ name: Build and Push Docker image
 on:
  push:
    branches:
-     - main
+     - master
 jobs:
  build:
    runs-on: ubuntu-latest
@@ -16,6 +16,6 @@ jobs:
          username: ${{ secrets.AZURE_CONTAINER_REGISTRY_USERNAME }}
          password: ${{ secrets.AZURE_CONTAINER_REGISTRY_PASSWORD }}
      - name: Build Docker image
-       run: docker build . -t ${{ secrets.AZURE_CONTAINER_REGISTRY_NAME }}.azurecr.io/mi-imagen:latest
+       run: docker build . -t ${{ secrets.AZURE_CONTAINER_REGISTRY_NAME }}.azurecr.io/webappsample:latest
      - name: Push Docker image
-       run: docker push ${{ secrets.AZURE_CONTAINER_REGISTRY_NAME }}.azurecr.io/mi-imagen:latest
+       run: docker push ${{ secrets.AZURE_CONTAINER_REGISTRY_NAME }}.azurecr.io/webappsample:latest
